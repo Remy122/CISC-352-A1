@@ -103,21 +103,23 @@ def prop_FC(csp, newVar=None):
     #IMPLEMENT
     vals = []
     if newVar is None:
-        constraints = csp.get_all_nary_cons(1)
+        constraints = csp.get_all_cons()
     else:
         constraints = csp.get_cons_with_var(newVar)
     
     for c in constraints:
         if c.get_n_unasgn() == 1:
-            n = c.get_n_unasgn_vars()[0]
-            for val in n.cur_domain():
+            n = c.get_unasgn_vars()[0]
+            for val in list(n.cur_domain()):
                 if n.in_cur_domain(val) and not c.check_var_val(n, val):
                     n.prune_value(val)
                     vals.append((n, val))
+                    
             if n.cur_domain_size() == 0:
                 return False, vals
     return True, vals
   
+
 
 def prop_GAC(csp, newVar=None):
     '''Do GAC propagation. If newVar is None we do initial GAC enforce

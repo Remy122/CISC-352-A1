@@ -1,6 +1,6 @@
 # =============================
 # Student Names: 
-# Group ID:
+# Group ID: Group 30
 # Date:
 # =============================
 # CISC 352
@@ -39,6 +39,8 @@ var_ordering == a function with the following template
 def ord_dh(csp):
     ''' return next Variable to be assigned according to the Degree Heuristic '''
     # IMPLEMENT
+   
+
     pass
 
 def ord_mrv(csp):
